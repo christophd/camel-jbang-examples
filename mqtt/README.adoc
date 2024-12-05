@@ -3,7 +3,7 @@
 This example is using Camel to receive MQTT events from an external MQTT broker,
 as illustrated below.
 
-image::mqtt-karavan.png[Apache Camel Karavan designer in Visual Code]
+image::mqtt-kaoto.png[Apache Camel Kaoto online designer]
 
 === Install JBang
 
