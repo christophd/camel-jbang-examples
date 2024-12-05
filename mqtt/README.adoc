@@ -42,7 +42,7 @@ Or use
 
 [source,sh]
 ----
-$ docker compose up
+$ docker compose up --detach
 ----
 
 Then you can run the Camel integration using:

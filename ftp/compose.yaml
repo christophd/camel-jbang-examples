@@ -1,7 +1,6 @@
 services:
 
   artemis:
-    container_name: my-artemis
     image: apache/activemq-artemis:2.37.0
     ports:
       - "8161:8161"
@@ -13,7 +12,6 @@ services:
       ANONYMOUS_LOGIN: false
 
   ftp-server:
-    container_name: my-ftp-server
     environment:
       - FTP_PASS=mypassword
       - FTP_USER=myuser

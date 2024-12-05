@@ -57,6 +57,10 @@ jobs:
 
           echo "Running tests"
 
+          pushd ftp/test
+          jbang citrus@citrusframework/citrus run ftp.camel.it.yaml
+          popd
+
           pushd mqtt/test
           jbang citrus@citrusframework/citrus run mqtt.camel.it.yaml
           popd
