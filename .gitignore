@@ -5,3 +5,4 @@ target/
 .idea/
 camel-runner.jar
 *.i??
+.citrus-jbang/
