@@ -1,118 +1,92 @@
-== ActiveMQ to FTP
+= ActiveMQ to FTP
 
 This example shows how to integrate ActiveMQ with FTP server.
 
 image::ftp-kaoto.png[Apache Camel Kaoto online designer]
 
-=== Running ActiveMQ and FTP server
+== Install Camel JBang
+
+include::../install.adoc[]
+
+== Running ActiveMQ and FTP server
 
 You need both an ActiveMQ Artemis broker, and FTP server up and running.
 
 You can run both via Docker Compose (or Podman)
 
-[source,sh]
+[source,shell]
 ----
-$ docker compose up --detach
-----
-
-=== Install JBang
-
-First install JBang according to https://www.jbang.dev
-
-When JBang is installed then you should be able to run from a shell:
-
-[source,sh]
-----
-$ jbang --version
+docker compose up --detach
 ----
 
-This will output the version of JBang.
-
-To run this example you can either install Camel on JBang via:
-
-[source,sh]
-----
-$ jbang app install camel@apache/camel
-----
-
-Which allows to run CamelJBang with `camel` as shown below.
-
-=== How to run
+== How to run
 
 Then you can run this example using:
 
-[source,sh]
+[source,shell]
 ----
-$ camel run *
+camel run *
 ----
 
-=== Sending Messages to ActiveMQ
+== Sending Messages to ActiveMQ
 
 When the example is running, you need to trigger Camel, by sending messages to the ActiveMQ broker.
 You can either do this via the broker web console http://localhost:8161 (login with `artemis/artemis`
 or by using Camel JBang:
 
-[source,sh]
+[source,shell]
 ----
-$ camel cmd send --body=file:test/payload.xml
+camel cmd send --body=file:test/payload.xml
 ----
 
-=== Browsing FTP server
+== Browsing FTP server
 
 When you have sent some messages to ActiveMQ Camel will route these to the FTP server.
 To see which files have been uploaded, you can start a remote shell into the Docker container or use Camel JBang:
 
-[source,sh]
+[source,shell]
 ----
-$ camel cmd browse
+camel cmd browse
 ----
 
 Which shows a status page of pending messages in the systems.
 
 To see the content of these messages, you can tell Camel to dump via
 
-[source,sh]
+[source,shell]
 ----
-$ camel cmd browse --dump
+camel cmd browse --dump
 ----
 
 TIP: To see more options use `camel cmd browse --help`.
 
-
-=== Developer Web Console
+== Developer Web Console
 
 You can enable the developer console via `--console` flag as show:
 
-[source,sh]
+[source,shell]
 ----
-$ camel run * --console
+camel run * --console
 ----
 
 Then you can browse: http://localhost:8080/q/dev to introspect the running Camel Application.
 
-=== Integration testing
+== Integration testing
 
 The example provides an automated integration test (`ftp.camel.it.yaml`) that you can run with the https://citrusframework.org/[Citrus] test framework.
 Please make sure to install Citrus as a JBang app, too.
 
 You may run the test with:
 
-[source,sh]
+[source,shell]
 ----
-$ citrus run ftp.camel.it.yaml
+citrus run ftp.camel.it.yaml
 ----
 
-=== More Information
+== More Information
 
 This example was also covered in the following YouTube video: https://youtu.be/V0sBmE8rcVg
 
+== Help and contributions
 
-=== Help and contributions
-
-If you hit any problem using Camel or have some feedback, then please
-https://camel.apache.org/community/support/[let us know].
-
-We also love contributors, so
-https://camel.apache.org/community/contributing/[get involved] :-)
-
-The Camel riders!
+include::../help.adoc[]

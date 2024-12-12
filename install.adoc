@@ -1,0 +1,24 @@
+First install JBang according to https://www.jbang.dev
+
+When JBang is installed then you should be able to run from a shell:
+
+[source,shell]
+----
+jbang --version
+----
+
+This will output the version of JBang.
+
+To run this example you can install Camel on JBang via:
+
+[source,shell]
+----
+jbang app install camel@apache/camel
+----
+
+Which allows to run Camel with `camel` as shown below.
+
+[source,shell]
+----
+camel --version
+----
