@@ -19,7 +19,30 @@ These examples uses JBang as the CLI which is a great tool that makes using Java
 
 == Install Camel JBang
 
-include::install.adoc[]
+First install JBang according to https://www.jbang.dev
+
+When JBang is installed then you should be able to run from a shell:
+
+[source,shell]
+----
+jbang --version
+----
+
+This will output the version of JBang.
+
+To run this example you can install Camel on JBang via:
+
+[source,shell]
+----
+jbang app install camel@apache/camel
+----
+
+Which allows to run Camel with `camel` as shown below.
+
+[source,shell]
+----
+camel --version
+----
 
 == Integration testing
 
@@ -58,4 +81,10 @@ You can also find a set of various Camel JBang examples at: https://github.com/a
 
 == Help and contributions
 
-include::help.adoc[]
+If you hit any problem using Camel or have some feedback, then please
+https://camel.apache.org/community/support/[let us know].
+
+We also love contributors, so
+https://camel.apache.org/community/contributing/[get involved] :-)
+
+The Camel riders!

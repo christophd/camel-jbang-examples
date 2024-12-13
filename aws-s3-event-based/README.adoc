@@ -6,7 +6,7 @@ Through the usage of EventBridge and SQS Services you'll be able to consume even
 
 == Install Camel JBang
 
-include::../install.adoc[]
+include::../install.adoc[see installation]
 
 == Setup the AWS S3 bucket, SQS Queue and EventBridge Rule
 
@@ -169,4 +169,10 @@ At the end the AWS environment on your account will be clean.
 
 == Help and contributions
 
-include::../help.adoc[]
+If you hit any problem using Camel or have some feedback, then please
+https://camel.apache.org/community/support/[let us know].
+
+We also love contributors, so
+https://camel.apache.org/community/contributing/[get involved] :-)
+
+The Camel riders!
