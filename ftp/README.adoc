@@ -6,7 +6,7 @@ image::ftp-kaoto.png[Apache Camel Kaoto online designer]
 
 == Install Camel JBang
 
-include::../install.adoc[]
+include::../install.adoc[see installation]
 
 == Running ActiveMQ and FTP server
 
@@ -89,4 +89,10 @@ This example was also covered in the following YouTube video: https://youtu.be/V
 
 == Help and contributions
 
-include::../help.adoc[]
+If you hit any problem using Camel or have some feedback, then please
+https://camel.apache.org/community/support/[let us know].
+
+We also love contributors, so
+https://camel.apache.org/community/contributing/[get involved] :-)
+
+The Camel riders!
