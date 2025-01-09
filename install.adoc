@@ -1,6 +1,6 @@
-First install JBang according to https://www.jbang.dev
+First install JBang according to the https://www.jbang.dev/download/[JBang installation guide]
 
-When JBang is installed then you should be able to run from a shell:
+When JBang is installed you should be able to run from a shell:
 
 [source,shell]
 ----
