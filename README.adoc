@@ -55,7 +55,7 @@ You need to install Citrus as a JBang app, too:
 jbang app install citrus@citrusframework/citrus
 ----
 
-Now you can start running commands for the Citrus JBang app with just calling `citrus`:
+Now you can start running commands for the Citrus JBang app with `citrus`:
 
 [source,shell]
 ----
@@ -69,6 +69,7 @@ You can run the test with Citrus JBang like this:
 
 [source,shell]
 ----
+cd test
 citrus run mqtt.camel.it.yaml
 ----
 
