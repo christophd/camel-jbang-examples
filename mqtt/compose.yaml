@@ -1,6 +1,6 @@
 services:
   mosquitto:
-    image: eclipse-mosquitto
+    image: mirror.gcr.io/eclipse-mosquitto
     ports:
       - '1883:1883'
     volumes:
