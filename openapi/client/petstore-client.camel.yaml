@@ -1,0 +1,26 @@
+- route:
+    from:
+      uri: "file://examples/"
+      parameters:
+        noop: true
+      steps:
+        - convertBodyTo:
+            type: "java.lang.String"
+            charset: "UTF8"
+        - setHeader:
+            name: "petId"
+            expression:
+              simple: "${replace('.json','',${header[CamelFileNameConsumed]})}"
+        - setHeader:
+            name: "Content-Type"
+            expression:
+              constant: "application/json"
+        - to:
+            uri: "log:info"
+            parameters:
+              showHeaders: true
+        - to:
+            uri: "kamelet:rest-openapi-sink"
+            parameters:
+              specification: '{{openapi.specification.url}}'
+              operation: addPet
