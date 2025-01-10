@@ -89,7 +89,7 @@ Then you can run this example using:
 
 [source,shell]
 ----
-$ camel run aws-s3-cdc-log.camel.yaml
+$ camel run application.properties aws-s3-cdc-log.camel.yaml
 ----
 
 Or run it even shorter:
@@ -105,7 +105,7 @@ You can enable the developer console via `--console` flag as show:
 
 [source,shell]
 ----
-$ camel run aws-s3-cdc-log.camel.yaml --console
+$ camel run application.properties aws-s3-cdc-log.camel.yaml --console
 ----
 
 Then you can browse: http://localhost:8080/q/dev to introspect the running Camel Application.
@@ -147,7 +147,7 @@ aws s3api delete-object --bucket cdc-s3-bucket --key example-file.txt
 
 == Cleanup AWS S3 bucket, SQS Queue and EventBridge Rule through Terraform
 
-You'll need to cleanup everything from AWS console or CLI.
+You'll need to clean up everything from AWS console or CLI.
 
 If you used terraform it will be enough to run terraform destroy
 
@@ -156,7 +156,7 @@ If you used terraform it will be enough to run terraform destroy
 cd terraform/
 ----
 
-At this point you should be to run the destroy
+At this point you should be to run the destroy operation with terraform.
 
 [source,shell]
 ----
@@ -166,6 +166,30 @@ terraform destroy -var="s3_bucket_name=s3-eventbridge-test" -var="sqs_queue_name
 You'll need to specify the same var used for terraform apply.
 
 At the end the AWS environment on your account will be clean.
+
+== Integration testing
+
+The example provides an automated integration test (`aws-s3-cdc-log.camel.it.yaml`) that you can run with the https://citrusframework.org/[Citrus] test framework.
+Please make sure to install Citrus as a JBang application (see link:../../install-citrus.adoc[Citrus installation guide]).
+
+Navigate to the test folder.
+
+[source,shell]
+----
+cd test/
+----
+
+You can run the test with:
+
+[source,shell]
+----
+citrus run aws-s3-cdc-log.camel.it.yaml
+----
+
+The test prepares the complete infrastructure and starts the Camel route automatically via JBang.
+The Citrus test starts a Localstack Testcontainers instance to simulate the AWS S3, SQS and EVENT_BRIDGE services.
+Once the AWS services are configured the test loads the Camel route and pushes some data to the S3 bucket.
+As a result you will see the S3 data being consumed by the event driven Camel application through SQS and EVENT_BRIDGE notifications.
 
 == Help and contributions
 
