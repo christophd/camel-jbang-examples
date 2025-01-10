@@ -19,13 +19,15 @@
     from:
       uri: "kamelet:aws-s3-event-based-source"
       parameters:
-        queueNameOrArn: "sqs-eventbridge-test-123"
-        accessKey: <access_key>
-        secretKey: <secret_key>
-        region: "eu-west-1"
+        queueNameOrArn: "{{aws.queueNameOrArn}}"
+        accessKey: "{{aws.accessKey}}"
+        secretKey: "{{aws.secretKey}}"
+        region: "{{aws.region}}"
+        overrideEndpoint: "{{aws.overrideEndpoint:false}}"
+        uriEndpointOverride: "{{aws.uriEndpointOverride:none}}"
         getObject: true
       steps:
-      - to: 
+      - to:
           uri: "kamelet:log-sink"
           parameters:
-            showStreams: true      
+            showStreams: true

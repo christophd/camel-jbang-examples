@@ -42,6 +42,7 @@ jobs:
       - name: Run Tests
         env:
           CITRUS_CAMEL_JBANG_DUMP_INTEGRATION_OUTPUT: "true"
+          CITRUS_TESTCONTAINERS_LOCALSTACK_IMAGE_NAME: "mirror.gcr.io/localstack/localstack"
         run: |
           echo "Install JBang via SDKMAN"
 
@@ -73,6 +74,10 @@ jobs:
           
           pushd openapi/client/test
           jbang citrus@citrusframework/citrus run petstore-client.camel.it.yaml
+          popd
+          
+          pushd aws-s3-event-based/test
+          jbang citrus@citrusframework/citrus run aws-s3-cdc-log.camel.it.yaml
           popd
       - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874 # v4.4.0
         if: always()
