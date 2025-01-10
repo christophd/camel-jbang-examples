@@ -10,7 +10,7 @@
         - setHeader:
             name: "petId"
             expression:
-              simple: "${replace('.json','',${header[CamelFileNameConsumed]})}"
+              simple: "${file:onlyname.noext}"
         - setHeader:
             name: "Content-Type"
             expression:
