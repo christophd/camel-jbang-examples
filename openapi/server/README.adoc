@@ -16,6 +16,13 @@ Then you can run the Camel integration using:
 camel run petstore-api.json application.properties petstore.camel.yaml
 ----
 
+You may also run this even more concise with:
+
+[source,shell]
+----
+camel run *
+----
+
 And then from another terminal (or run the integration with `--background` option),
 then send a message to the REST service.
 

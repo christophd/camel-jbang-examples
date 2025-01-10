@@ -25,3 +25,15 @@ actions:
       receiveResponse:
         operation: getPetById
         status: 200
+
+  - openapi:
+      specification: "http://localhost:8080/openapi"
+      client: "http://localhost:8080/petstore"
+      sendRequest:
+        operation: addPet
+  - openapi:
+      specification: "http://localhost:8080/openapi"
+      client: "http://localhost:8080/petstore"
+      receiveResponse:
+        operation: addPet
+        status: 200
