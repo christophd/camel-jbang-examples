@@ -6,7 +6,7 @@ Through the usage of EventBridge and SQS Services you'll be able to consume even
 
 == Install Camel JBang
 
-include::../install.adoc[see installation]
+include::../../install.adoc[see installation]
 
 == Setup the AWS S3 bucket, SQS Queue and EventBridge Rule
 
@@ -108,7 +108,7 @@ You can enable the developer console via `--console` flag as show:
 $ camel run application.properties aws-s3-cdc-log.camel.yaml --console
 ----
 
-Then you can browse: http://localhost:8080/q/dev to introspect the running Camel Application.
+Then you can browse: http://localhost:8080/q/dev to introspect the running Camel application.
 
 == Create and delete an object
 
