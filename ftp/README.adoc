@@ -32,11 +32,11 @@ camel run *
 
 When the example is running, you need to trigger Camel, by sending messages to the ActiveMQ broker.
 You can either do this via the broker web console http://localhost:8161 (login with `artemis/artemis`
-or by using Camel JBang:
+or by using Camel JBang (by sending the message into the existing running Camel named ftp):
 
 [source,shell]
 ----
-camel cmd send --body=file:test/payload.xml
+camel cmd send ftp --body=file:test/payload.xml
 ----
 
 == Browsing FTP server
