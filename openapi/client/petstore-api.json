@@ -24,7 +24,7 @@
           "default": "localhost:8080"
         },
         "basePath": {
-          "default": "/petstore"
+          "default": "/"
         }
       }
     }

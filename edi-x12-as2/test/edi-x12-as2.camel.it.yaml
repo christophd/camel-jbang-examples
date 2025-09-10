@@ -15,13 +15,12 @@ actions:
           file: "compose.yaml"
   - camel:
       jbang:
-        camelVersion: 4.11.0
         run:
           resources:
-            - "../camel/App.java"
-            - "../camel/InvalidPartnerException.java"
-            - "../camel/application.properties"
-            - "../camel/fake.camel.yaml"
+            - "App.java"
+            - "InvalidPartnerException.java"
+            - "application.properties"
+            - "fake.camel.yaml"
           integration:
             name: "edi-x12-as2-camel"
             file: "../camel/edi-x12-as2.camel.yaml"
