@@ -150,7 +150,7 @@ Use Camel JBang Infra to run Keycloak:
 
 [source,sh]
 ----
-$ jbang -Dcamel.jbang.version=4.16.0 camel@apache/camel infra run keycloak
+$ camel infra run keycloak
 ----
 
 This will start Keycloak configured with:
@@ -164,7 +164,7 @@ To stop Keycloak later:
 
 [source,sh]
 ----
-$ jbang -Dcamel.jbang.version=4.16.0 camel@apache/camel infra stop keycloak
+$ camel infra stop keycloak
 ----
 
 == Configuring the Migration
@@ -218,7 +218,7 @@ After configuring LDAP and Keycloak, and adding test users to LDAP, run the migr
 
 [source,sh]
 ----
-$ jbang -Dcamel.jbang.version=4.17.0-SNAPSHOT camel@apache/camel run *
+$ camel run *
 ----
 
 IMPORTANT: Make sure you have created the LDAP organizational unit structure and added test users (see "Adding Test Users to LDAP" section above). If you see an error like `NameNotFoundException: No Such Object`, it means the LDAP base DN doesn't exist yet.
@@ -326,7 +326,7 @@ To stop Keycloak:
 
 [source,sh]
 ----
-$ jbang -Dcamel.jbang.version=4.16.0 camel@apache/camel infra stop keycloak
+$ camel infra stop keycloak
 ----
 
 To stop OpenLDAP:
