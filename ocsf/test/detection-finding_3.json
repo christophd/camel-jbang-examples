@@ -1,0 +1,185 @@
+{
+  "activity_id": 1,
+  "activity_name": "Create",
+  "category_name": "Findings",
+  "category_uid": 2,
+  "class_name": "Detection Finding",
+  "class_uid": 2004,
+  "cloud": {
+    "account": {
+      "type": "AWS Account",
+      "type_id": 10,
+      "uid": "555666777888"
+    },
+    "cloud_partition": "aws",
+    "provider": "AWS",
+    "region": "eu-central-1"
+  },
+  "confidence": "High",
+  "confidence_id": 3,
+  "count": 1,
+  "device": {
+    "hostname": "bastion-host-prod.eu-central-1.compute.internal",
+    "ip": "10.2.1.10",
+    "instance_uid": "i-0bastion456abc789",
+    "os": {
+      "name": "Amazon Linux",
+      "version": "2023"
+    },
+    "type": "Server",
+    "type_id": 1
+  },
+  "evidences": [
+    {
+      "api": {
+        "operation": "CreateUser",
+        "service": {
+          "name": "iam.amazonaws.com"
+        }
+      },
+      "data": {
+        "resource_role": "ACTOR"
+      },
+      "src_endpoint": {
+        "autonomous_system": {
+          "name": "M247 Ltd",
+          "number": 9009
+        },
+        "ip": "89.187.185.42",
+        "isp": "M247",
+        "isp_org": "M247 Ltd",
+        "location": {
+          "city": "Bucharest",
+          "country": "Romania",
+          "lat": 44.4268,
+          "long": 26.1025
+        }
+      }
+    },
+    {
+      "api": {
+        "operation": "AttachUserPolicy",
+        "service": {
+          "name": "iam.amazonaws.com"
+        }
+      },
+      "data": {
+        "policy_arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+      },
+      "src_endpoint": {
+        "ip": "89.187.185.42"
+      }
+    },
+    {
+      "api": {
+        "operation": "CreateAccessKey",
+        "service": {
+          "name": "iam.amazonaws.com"
+        }
+      },
+      "src_endpoint": {
+        "ip": "89.187.185.42"
+      }
+    }
+  ],
+  "finding_info": {
+    "analytic": {
+      "type": "Machine Learning",
+      "type_id": 3,
+      "uid": "guardduty-iam-anomaly-detector"
+    },
+    "created_time": 1769460000000,
+    "created_time_dt": "2026-01-26T20:40:00.000Z",
+    "desc": "A new IAM user 'backup-admin-temp' was created and immediately granted AdministratorAccess policy. An access key was generated within 30 seconds. Activity originated from an IP in Romania using a known VPN provider. This pattern is consistent with privilege escalation after initial compromise.",
+    "first_seen_time": 1769459900000,
+    "first_seen_time_dt": "2026-01-26T20:38:20.000Z",
+    "last_seen_time": 1769459930000,
+    "last_seen_time_dt": "2026-01-26T20:38:50.000Z",
+    "modified_time": 1769460000000,
+    "modified_time_dt": "2026-01-26T20:40:00.000Z",
+    "product": {
+      "uid": "guardduty-iam-threat-intel"
+    },
+    "title": "IAM Privilege Escalation - Backdoor Admin User Created",
+    "types": [
+      "TTPs",
+      "Persistence",
+      "Create Account",
+      "T1136.003",
+      "Privilege Escalation"
+    ],
+    "uid": "arn:aws:guardduty:eu-central-1:555666777888:detector/def456/finding/privesc-003",
+    "uid_alt": "iam-privesc-003"
+  },
+  "is_alert": true,
+  "malware": [
+    {
+      "name": "Backdoor.IAMPersistence",
+      "uid": "THREAT-IAM-2026-003",
+      "classification_ids": [1, 5]
+    }
+  ],
+  "message": "Suspected privilege escalation: new admin IAM user created with immediate access key generation",
+  "metadata": {
+    "extensions": [
+      {
+        "name": "aws",
+        "uid": "998",
+        "version": "1.0.0"
+      }
+    ],
+    "product": {
+      "feature": {
+        "name": "IAMThreatDetection"
+      },
+      "name": "GuardDuty",
+      "uid": "arn:aws:securityhub:eu-central-1::product/aws/guardduty",
+      "vendor_name": "AWS"
+    },
+    "profiles": [
+      "cloud",
+      "datetime"
+    ],
+    "uid": "finding-privesc-uuid",
+    "version": "1.6.0"
+  },
+  "remediation": {
+    "desc": "IMMEDIATELY: 1) Delete the unauthorized IAM user 'backup-admin-temp'. 2) Deactivate all access keys for the user. 3) Review CloudTrail for the source of the compromised credentials. 4) Rotate all admin access keys. 5) Enable IAM Access Analyzer. 6) Implement SCP to prevent IAM user creation.",
+    "references": [
+      "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-iam.html",
+      "https://attack.mitre.org/techniques/T1136/003/"
+    ]
+  },
+  "resources": [
+    {
+      "cloud_partition": "aws",
+      "owner": {
+        "account": {
+          "type": "AWS Account",
+          "type_id": 10,
+          "uid": "555666777888"
+        }
+      },
+      "region": "global",
+      "type": "AWS::IAM::User",
+      "uid": "arn:aws:iam::555666777888:user/backup-admin-temp"
+    },
+    {
+      "cloud_partition": "aws",
+      "region": "global",
+      "type": "AWS::IAM::AccessKey",
+      "uid": "AKIA5UNAUTHORIZED123"
+    }
+  ],
+  "risk_level": "Critical",
+  "risk_level_id": 4,
+  "risk_score": 99,
+  "severity": "Critical",
+  "severity_id": 5,
+  "status": "New",
+  "status_id": 1,
+  "time": 1769460000000,
+  "time_dt": "2026-01-26T20:40:00.000Z",
+  "type_name": "Detection Finding: Create",
+  "type_uid": 200401
+}

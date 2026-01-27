@@ -1,0 +1,152 @@
+{
+  "activity_id": 1,
+  "activity_name": "Create",
+  "category_name": "Findings",
+  "category_uid": 2,
+  "class_name": "Detection Finding",
+  "class_uid": 2004,
+  "cloud": {
+    "account": {
+      "type": "AWS Account",
+      "type_id": 10,
+      "uid": "987654321098"
+    },
+    "cloud_partition": "aws",
+    "provider": "AWS",
+    "region": "us-east-1"
+  },
+  "confidence": "High",
+  "confidence_id": 3,
+  "count": 47,
+  "device": {
+    "hostname": "prod-web-server-01.ec2.internal",
+    "ip": "10.0.2.156",
+    "instance_uid": "i-0def789abc123456",
+    "os": {
+      "name": "Ubuntu",
+      "version": "22.04 LTS"
+    },
+    "type": "Server",
+    "type_id": 1
+  },
+  "evidences": [
+    {
+      "api": {
+        "operation": "RunInstances",
+        "service": {
+          "name": "ec2.amazonaws.com"
+        }
+      },
+      "data": {
+        "resource_role": "ACTOR"
+      },
+      "src_endpoint": {
+        "autonomous_system": {
+          "name": "CHINANET-BACKBONE",
+          "number": 4134
+        },
+        "ip": "218.92.0.123",
+        "isp": "China Telecom",
+        "isp_org": "Chinanet",
+        "location": {
+          "city": "Shanghai",
+          "country": "China",
+          "lat": 31.2222,
+          "long": 121.4581
+        }
+      }
+    }
+  ],
+  "finding_info": {
+    "analytic": {
+      "type": "Rule",
+      "type_id": 1,
+      "uid": "guardduty-unauthorized-access-rule"
+    },
+    "created_time": 1769450000000,
+    "created_time_dt": "2026-01-26T17:53:20.000Z",
+    "desc": "API calls to launch EC2 instances were detected from an IP address in China (218.92.0.123) that has never been used in this account. 47 instances were requested in a crypto-mining configuration.",
+    "first_seen_time": 1769448000000,
+    "first_seen_time_dt": "2026-01-26T17:20:00.000Z",
+    "last_seen_time": 1769450000000,
+    "last_seen_time_dt": "2026-01-26T17:53:20.000Z",
+    "modified_time": 1769450100000,
+    "modified_time_dt": "2026-01-26T17:55:00.000Z",
+    "product": {
+      "uid": "guardduty-threat-detector"
+    },
+    "title": "Cryptocurrency Mining EC2 Instance Launch from Unusual Location",
+    "types": [
+      "TTPs",
+      "Impact:EC2/BitcoinDomainRequest.Reputation",
+      "UnauthorizedAccess:EC2/TorClient"
+    ],
+    "uid": "arn:aws:guardduty:us-east-1:987654321098:detector/xyz789/finding/crypto-001",
+    "uid_alt": "crypto-mining-001"
+  },
+  "is_alert": true,
+  "malware": [
+    {
+      "name": "CoinMiner.Generic",
+      "uid": "MALWARE-CRYPTO-2026-001",
+      "classification_ids": [8, 11]
+    }
+  ],
+  "message": "Suspected crypto-mining EC2 instances launched from unauthorized foreign IP",
+  "metadata": {
+    "extensions": [
+      {
+        "name": "aws",
+        "uid": "998",
+        "version": "1.0.0"
+      }
+    ],
+    "product": {
+      "feature": {
+        "name": "ThreatDetection"
+      },
+      "name": "GuardDuty",
+      "uid": "arn:aws:securityhub:us-east-1::product/aws/guardduty",
+      "vendor_name": "AWS"
+    },
+    "profiles": [
+      "cloud",
+      "datetime"
+    ],
+    "uid": "finding-crypto-mining-uuid",
+    "version": "1.6.0"
+  },
+  "remediation": {
+    "desc": "Immediately terminate the unauthorized EC2 instances. Revoke the compromised IAM credentials. Enable MFA on all IAM users. Review CloudTrail logs for additional unauthorized activity.",
+    "references": [
+      "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+      "https://aws.amazon.com/blogs/security/how-to-detect-and-automatically-remediate-unintended-crypto-mining/"
+    ]
+  },
+  "resources": [
+    {
+      "cloud_partition": "aws",
+      "owner": {
+        "account": {
+          "type": "AWS Account",
+          "type_id": 10,
+          "uid": "987654321098"
+        }
+      },
+      "region": "us-east-1",
+      "type": "AWS::EC2::Instance",
+      "uid": "arn:aws:ec2:us-east-1:987654321098:instance/i-0unauthorized123"
+    }
+  ],
+  "risk_level": "Critical",
+  "risk_level_id": 4,
+  "risk_score": 95,
+  "severity": "Critical",
+  "severity_id": 5,
+  "status": "New",
+  "status_id": 1,
+  "time": 1769450100000,
+  "time_dt": "2026-01-26T17:55:00.000Z",
+  "type_name": "Detection Finding: Create",
+  "type_uid": 200401
+}

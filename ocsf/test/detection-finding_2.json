@@ -1,0 +1,169 @@
+{
+  "activity_id": 1,
+  "activity_name": "Create",
+  "category_name": "Findings",
+  "category_uid": 2,
+  "class_name": "Detection Finding",
+  "class_uid": 2004,
+  "cloud": {
+    "account": {
+      "type": "AWS Account",
+      "type_id": 10,
+      "uid": "111222333444"
+    },
+    "cloud_partition": "aws",
+    "provider": "AWS",
+    "region": "us-west-2"
+  },
+  "confidence": "Medium",
+  "confidence_id": 2,
+  "count": 1523,
+  "device": {
+    "hostname": "api-gateway-prod.internal",
+    "ip": "10.1.5.89",
+    "instance_uid": "i-0gateway789def123",
+    "os": {
+      "name": "Amazon Linux",
+      "version": "2023"
+    },
+    "type": "Server",
+    "type_id": 1
+  },
+  "evidences": [
+    {
+      "api": {
+        "operation": "Invoke",
+        "service": {
+          "name": "execute-api.amazonaws.com"
+        }
+      },
+      "data": {
+        "resource_role": "TARGET"
+      },
+      "src_endpoint": {
+        "autonomous_system": {
+          "name": "OVH SAS",
+          "number": 16276
+        },
+        "ip": "51.195.45.67",
+        "isp": "OVH",
+        "isp_org": "OVH Hosting",
+        "location": {
+          "city": "Paris",
+          "country": "France",
+          "lat": 48.8566,
+          "long": 2.3522
+        }
+      }
+    },
+    {
+      "api": {
+        "operation": "Invoke",
+        "service": {
+          "name": "execute-api.amazonaws.com"
+        }
+      },
+      "src_endpoint": {
+        "autonomous_system": {
+          "name": "Hetzner Online GmbH",
+          "number": 24940
+        },
+        "ip": "95.216.123.89",
+        "isp": "Hetzner",
+        "isp_org": "Hetzner Online GmbH",
+        "location": {
+          "city": "Helsinki",
+          "country": "Finland",
+          "lat": 60.1699,
+          "long": 24.9384
+        }
+      }
+    }
+  ],
+  "finding_info": {
+    "analytic": {
+      "type": "Statistical",
+      "type_id": 2,
+      "uid": "waf-rate-limit-detector"
+    },
+    "created_time": 1769455000000,
+    "created_time_dt": "2026-01-26T19:16:40.000Z",
+    "desc": "A distributed brute-force attack targeting the /api/v1/auth/login endpoint was detected. Over 1500 failed authentication attempts from multiple IP addresses across Europe in the last 15 minutes. Attack pattern suggests credential stuffing using leaked database.",
+    "first_seen_time": 1769454100000,
+    "first_seen_time_dt": "2026-01-26T19:01:40.000Z",
+    "last_seen_time": 1769455000000,
+    "last_seen_time_dt": "2026-01-26T19:16:40.000Z",
+    "modified_time": 1769455100000,
+    "modified_time_dt": "2026-01-26T19:18:20.000Z",
+    "product": {
+      "uid": "aws-waf-security-automations"
+    },
+    "title": "Distributed Brute-Force Attack on Authentication API",
+    "types": [
+      "TTPs",
+      "Credential Access",
+      "Brute Force",
+      "T1110.004"
+    ],
+    "uid": "arn:aws:securityhub:us-west-2:111222333444:finding/bruteforce-002",
+    "uid_alt": "brute-force-auth-002"
+  },
+  "is_alert": true,
+  "message": "Distributed brute-force credential stuffing attack detected on authentication API",
+  "metadata": {
+    "extensions": [
+      {
+        "name": "aws",
+        "uid": "998",
+        "version": "1.0.0"
+      }
+    ],
+    "product": {
+      "feature": {
+        "name": "WebApplicationFirewall"
+      },
+      "name": "AWS WAF",
+      "uid": "arn:aws:securityhub:us-west-2::product/aws/waf",
+      "vendor_name": "AWS"
+    },
+    "profiles": [
+      "cloud",
+      "datetime"
+    ],
+    "uid": "finding-bruteforce-uuid",
+    "version": "1.6.0"
+  },
+  "remediation": {
+    "desc": "Enable account lockout after 5 failed attempts. Implement CAPTCHA on login. Add the attacking IP ranges to WAF blocklist. Enable enhanced logging. Consider implementing adaptive MFA.",
+    "references": [
+      "https://owasp.org/www-community/attacks/Credential_stuffing",
+      "https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statement-type-rate-based.html"
+    ]
+  },
+  "resources": [
+    {
+      "cloud_partition": "aws",
+      "owner": {
+        "account": {
+          "type": "AWS Account",
+          "type_id": 10,
+          "uid": "111222333444"
+        }
+      },
+      "region": "us-west-2",
+      "type": "AWS::ApiGateway::RestApi",
+      "uid": "arn:aws:execute-api:us-west-2:111222333444:abc123def/prod/POST/api/v1/auth/login"
+    }
+  ],
+  "risk_level": "High",
+  "risk_level_id": 3,
+  "risk_score": 78,
+  "severity": "High",
+  "severity_id": 4,
+  "status": "In Progress",
+  "status_id": 2,
+  "time": 1769455100000,
+  "time_dt": "2026-01-26T19:18:20.000Z",
+  "type_name": "Detection Finding: Create",
+  "type_uid": 200401
+}

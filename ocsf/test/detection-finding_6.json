@@ -1,0 +1,161 @@
+{
+  "activity_id": 1,
+  "activity_name": "Create",
+  "category_name": "Findings",
+  "category_uid": 2,
+  "class_name": "Detection Finding",
+  "class_uid": 2004,
+  "cloud": {
+    "account": {
+      "type": "AWS Account",
+      "type_id": 10,
+      "uid": "777888999000"
+    },
+    "cloud_partition": "aws",
+    "provider": "AWS",
+    "region": "eu-west-2"
+  },
+  "confidence": "Medium",
+  "confidence_id": 2,
+  "count": 15,
+  "device": {
+    "hostname": "eks-worker-node-prod-01",
+    "ip": "10.8.4.55",
+    "instance_uid": "i-0eks789worker123",
+    "os": {
+      "name": "Bottlerocket",
+      "version": "1.19.0"
+    },
+    "type": "Container Host",
+    "type_id": 9
+  },
+  "evidences": [
+    {
+      "api": {
+        "operation": "exec",
+        "service": {
+          "name": "kubernetes.io"
+        }
+      },
+      "data": {
+        "namespace": "production",
+        "pod": "webapp-frontend-7d8f9c6b5-x2k9m",
+        "container": "nginx",
+        "command": "/bin/sh -c 'curl http://169.254.169.254/latest/meta-data/iam/security-credentials/'",
+        "resource_role": "ACTOR"
+      },
+      "src_endpoint": {
+        "autonomous_system": {
+          "name": "Amazon.com Inc.",
+          "number": 16509
+        },
+        "ip": "10.8.4.55",
+        "location": {
+          "city": "London",
+          "country": "United Kingdom",
+          "lat": 51.5074,
+          "long": -0.1278
+        }
+      }
+    }
+  ],
+  "finding_info": {
+    "analytic": {
+      "type": "Rule",
+      "type_id": 1,
+      "uid": "eks-imds-access-detector"
+    },
+    "created_time": 1769475000000,
+    "created_time_dt": "2026-01-27T00:50:00.000Z",
+    "desc": "Multiple attempts to access EC2 Instance Metadata Service (IMDS) from a container in the production namespace. The container 'nginx' in pod 'webapp-frontend' is attempting to retrieve IAM credentials via the metadata endpoint. This is a known SSRF attack vector used for credential theft in containerized environments.",
+    "first_seen_time": 1769473000000,
+    "first_seen_time_dt": "2026-01-27T00:16:40.000Z",
+    "last_seen_time": 1769475000000,
+    "last_seen_time_dt": "2026-01-27T00:50:00.000Z",
+    "modified_time": 1769475100000,
+    "modified_time_dt": "2026-01-27T00:51:40.000Z",
+    "product": {
+      "uid": "amazon-guardduty-eks"
+    },
+    "title": "Container IMDS Credential Theft Attempt via SSRF",
+    "types": [
+      "TTPs",
+      "Credential Access",
+      "Unsecured Credentials",
+      "T1552.005",
+      "Server-Side Request Forgery"
+    ],
+    "uid": "arn:aws:guardduty:eu-west-2:777888999000:detector/eks123/finding/imds-006",
+    "uid_alt": "container-imds-006"
+  },
+  "is_alert": true,
+  "message": "Container attempting to steal IAM credentials via IMDS endpoint - SSRF attack detected",
+  "metadata": {
+    "extensions": [
+      {
+        "name": "aws",
+        "uid": "998",
+        "version": "1.0.0"
+      },
+      {
+        "name": "kubernetes",
+        "uid": "1001",
+        "version": "1.0.0"
+      }
+    ],
+    "product": {
+      "feature": {
+        "name": "EKSProtection"
+      },
+      "name": "GuardDuty",
+      "uid": "arn:aws:securityhub:eu-west-2::product/aws/guardduty",
+      "vendor_name": "AWS"
+    },
+    "profiles": [
+      "cloud",
+      "container",
+      "datetime"
+    ],
+    "uid": "finding-imds-uuid",
+    "version": "1.6.0"
+  },
+  "remediation": {
+    "desc": "1) Immediately terminate the compromised pod. 2) Enable IMDSv2 with hop limit of 1 on all EC2 instances. 3) Implement network policies to block IMDS access from pods. 4) Review container image for vulnerabilities. 5) Scan for web application SSRF vulnerabilities. 6) Enable EKS Pod Identity instead of node-level IAM roles.",
+    "references": [
+      "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html",
+      "https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html",
+      "https://attack.mitre.org/techniques/T1552/005/"
+    ]
+  },
+  "resources": [
+    {
+      "cloud_partition": "aws",
+      "owner": {
+        "account": {
+          "type": "AWS Account",
+          "type_id": 10,
+          "uid": "777888999000"
+        }
+      },
+      "region": "eu-west-2",
+      "type": "AWS::EKS::Cluster",
+      "uid": "arn:aws:eks:eu-west-2:777888999000:cluster/prod-cluster"
+    },
+    {
+      "region": "eu-west-2",
+      "type": "Kubernetes::Pod",
+      "uid": "production/webapp-frontend-7d8f9c6b5-x2k9m"
+    }
+  ],
+  "risk_level": "High",
+  "risk_level_id": 3,
+  "risk_score": 82,
+  "severity": "High",
+  "severity_id": 4,
+  "status": "New",
+  "status_id": 1,
+  "time": 1769475100000,
+  "time_dt": "2026-01-27T00:51:40.000Z",
+  "type_name": "Detection Finding: Create",
+  "type_uid": 200401
+}

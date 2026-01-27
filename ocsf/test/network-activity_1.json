@@ -1,0 +1,78 @@
+{
+  "activity_id": 6,
+  "activity_name": "Traffic",
+  "category_name": "Network Activity",
+  "category_uid": 4,
+  "class_name": "Network Activity",
+  "class_uid": 4001,
+  "action": "Blocked",
+  "action_id": 2,
+  "app_name": "SSH",
+  "cloud": {
+    "account": {
+      "type": "AWS Account",
+      "type_id": 10,
+      "uid": "111222333444"
+    },
+    "provider": "AWS",
+    "region": "us-west-2"
+  },
+  "connection_info": {
+    "boundary": "External",
+    "boundary_id": 3,
+    "direction": "Inbound",
+    "direction_id": 1,
+    "protocol_name": "TCP",
+    "protocol_num": 6
+  },
+  "count": 2547,
+  "dst_endpoint": {
+    "hostname": "bastion-prod-01.internal",
+    "ip": "10.0.1.50",
+    "port": 22,
+    "svc_name": "SSH"
+  },
+  "duration": 3600000,
+  "end_time": 1769505000000,
+  "end_time_dt": "2026-01-27T09:10:00.000Z",
+  "message": "SSH brute force attack blocked - 2547 connection attempts from known malicious IP",
+  "metadata": {
+    "product": {
+      "name": "AWS Network Firewall",
+      "vendor_name": "AWS",
+      "version": "1.0"
+    },
+    "version": "1.6.0"
+  },
+  "severity": "High",
+  "severity_id": 4,
+  "src_endpoint": {
+    "ip": "45.155.205.233",
+    "port": 54321,
+    "location": {
+      "city": "Moscow",
+      "country": "Russia",
+      "lat": 55.7558,
+      "long": 37.6173
+    },
+    "isp": "SELECTEL",
+    "autonomous_system": {
+      "name": "Selectel Ltd.",
+      "number": 49505
+    }
+  },
+  "start_time": 1769501400000,
+  "start_time_dt": "2026-01-27T08:10:00.000Z",
+  "status": "Success",
+  "status_id": 1,
+  "time": 1769505000000,
+  "time_dt": "2026-01-27T09:10:00.000Z",
+  "traffic": {
+    "bytes_in": 512000,
+    "bytes_out": 0,
+    "packets_in": 2547,
+    "packets_out": 0
+  },
+  "type_name": "Network Activity: Traffic",
+  "type_uid": 400106
+}

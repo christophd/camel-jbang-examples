@@ -1,0 +1,87 @@
+{
+  "activity_id": 2,
+  "activity_name": "Logoff",
+  "category_name": "Identity & Access Management",
+  "category_uid": 3,
+  "class_name": "Authentication",
+  "class_uid": 3002,
+  "actor": {
+    "user": {
+      "name": "suspicious.user",
+      "uid": "sususer@external.com",
+      "type": "User",
+      "type_id": 1
+    }
+  },
+  "auth_protocol": "Kerberos",
+  "auth_protocol_id": 2,
+  "auth_factors": [
+    {
+      "factor_type": "Password",
+      "factor_type_id": 1
+    }
+  ],
+  "cloud": {
+    "account": {
+      "type": "AWS Account",
+      "type_id": 10,
+      "uid": "987654321098"
+    },
+    "provider": "AWS",
+    "region": "eu-west-1"
+  },
+  "dst_endpoint": {
+    "hostname": "prod-dc01.internal.corp",
+    "ip": "10.0.1.5",
+    "port": 88,
+    "svc_name": "Active Directory"
+  },
+  "is_cleartext": false,
+  "is_mfa": false,
+  "is_new_logon": false,
+  "is_remote": true,
+  "logon_type": "Network",
+  "logon_type_id": 3,
+  "message": "Failed login attempt - account locked after 5 failed attempts from Tor exit node",
+  "metadata": {
+    "product": {
+      "name": "Windows Security",
+      "vendor_name": "Microsoft",
+      "version": "10.0"
+    },
+    "version": "1.6.0"
+  },
+  "service": {
+    "name": "Windows Logon",
+    "uid": "NTLM"
+  },
+  "severity": "High",
+  "severity_id": 4,
+  "src_endpoint": {
+    "ip": "185.220.101.42",
+    "location": {
+      "city": "Frankfurt",
+      "country": "Germany",
+      "lat": 50.1109,
+      "long": 8.6821
+    },
+    "isp": "Tor Exit Node",
+    "autonomous_system": {
+      "name": "Zwiebelfreunde e.V.",
+      "number": 208294
+    }
+  },
+  "status": "Failure",
+  "status_id": 2,
+  "status_detail": "Account locked out due to excessive failed login attempts",
+  "time": 1769485000000,
+  "time_dt": "2026-01-27T03:36:40.000Z",
+  "type_name": "Authentication: Logon",
+  "type_uid": 300201,
+  "user": {
+    "name": "suspicious.user",
+    "uid": "sususer",
+    "type": "User",
+    "type_id": 1
+  }
+}

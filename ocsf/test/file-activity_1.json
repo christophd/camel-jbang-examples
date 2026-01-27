@@ -1,0 +1,78 @@
+{
+  "activity_id": 1,
+  "activity_name": "Create",
+  "category_name": "System Activity",
+  "category_uid": 1,
+  "class_name": "File Activity",
+  "class_uid": 1001,
+  "actor": {
+    "process": {
+      "cmd_line": "powershell.exe -ExecutionPolicy Bypass -NoProfile -EncodedCommand JABjAGwA...",
+      "file": {
+        "name": "powershell.exe",
+        "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "type": "Regular File",
+        "type_id": 1
+      },
+      "name": "powershell.exe",
+      "pid": 4532,
+      "uid": "proc-ps-4532"
+    },
+    "user": {
+      "name": "SYSTEM",
+      "uid": "S-1-5-18",
+      "type": "System",
+      "type_id": 2
+    }
+  },
+  "device": {
+    "hostname": "DESKTOP-FINANCE01",
+    "ip": "10.2.5.101",
+    "os": {
+      "name": "Windows",
+      "version": "11 Pro 22H2"
+    },
+    "type": "Desktop",
+    "type_id": 2
+  },
+  "file": {
+    "name": "mimikatz.exe",
+    "path": "C:\\Users\\Public\\Downloads\\mimikatz.exe",
+    "size": 1247232,
+    "type": "Regular File",
+    "type_id": 1,
+    "hashes": [
+      {
+        "algorithm": "SHA-256",
+        "algorithm_id": 3,
+        "value": "e930b05fd7c0e1c8d6f4d6aa0c4c9a8e7b3c2d1f0e9a8b7c6d5e4f3a2b1c0d9e"
+      },
+      {
+        "algorithm": "MD5",
+        "algorithm_id": 1,
+        "value": "a1b2c3d4e5f6789012345678"
+      }
+    ],
+    "signature": {
+      "state": "Unsigned",
+      "state_id": 2
+    }
+  },
+  "message": "Known credential dumping tool (Mimikatz) dropped to disk by PowerShell with encoded command",
+  "metadata": {
+    "product": {
+      "name": "CrowdStrike Falcon",
+      "vendor_name": "CrowdStrike",
+      "version": "6.45"
+    },
+    "version": "1.6.0"
+  },
+  "severity": "Critical",
+  "severity_id": 5,
+  "status": "Success",
+  "status_id": 1,
+  "time": 1769515000000,
+  "time_dt": "2026-01-27T11:56:40.000Z",
+  "type_name": "File Activity: Create",
+  "type_uid": 100101
+}

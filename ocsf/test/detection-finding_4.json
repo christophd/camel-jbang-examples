@@ -1,0 +1,162 @@
+{
+  "activity_id": 1,
+  "activity_name": "Create",
+  "category_name": "Findings",
+  "category_uid": 2,
+  "class_name": "Detection Finding",
+  "class_uid": 2004,
+  "cloud": {
+    "account": {
+      "type": "AWS Account",
+      "type_id": 10,
+      "uid": "999888777666"
+    },
+    "cloud_partition": "aws",
+    "provider": "AWS",
+    "region": "ap-southeast-1"
+  },
+  "confidence": "High",
+  "confidence_id": 3,
+  "count": 3,
+  "device": {
+    "hostname": "db-primary-prod.ap-southeast-1.rds.amazonaws.com",
+    "ip": "10.3.8.201",
+    "instance_uid": "db-instance-prod-mysql-01",
+    "os": {
+      "name": "MySQL",
+      "version": "8.0.35"
+    },
+    "type": "Database",
+    "type_id": 6
+  },
+  "evidences": [
+    {
+      "api": {
+        "operation": "SELECT",
+        "service": {
+          "name": "rds.amazonaws.com"
+        }
+      },
+      "data": {
+        "query": "SELECT * FROM users WHERE 1=1 OR ''=''; SELECT * FROM credit_cards; --",
+        "resource_role": "TARGET"
+      },
+      "src_endpoint": {
+        "autonomous_system": {
+          "name": "Linode LLC",
+          "number": 63949
+        },
+        "ip": "172.105.78.234",
+        "isp": "Linode",
+        "isp_org": "Akamai Technologies",
+        "location": {
+          "city": "Singapore",
+          "country": "Singapore",
+          "lat": 1.3521,
+          "long": 103.8198
+        }
+      }
+    }
+  ],
+  "finding_info": {
+    "analytic": {
+      "type": "Signature",
+      "type_id": 1,
+      "uid": "rds-sql-injection-detector"
+    },
+    "created_time": 1769465000000,
+    "created_time_dt": "2026-01-26T22:03:20.000Z",
+    "desc": "SQL injection attack detected on production MySQL database. Malicious queries attempting to extract data from 'users' and 'credit_cards' tables. Attack bypassed application layer and directly targeted database. 3 successful data exfiltration attempts detected totaling approximately 50,000 records.",
+    "first_seen_time": 1769464000000,
+    "first_seen_time_dt": "2026-01-26T21:46:40.000Z",
+    "last_seen_time": 1769465000000,
+    "last_seen_time_dt": "2026-01-26T22:03:20.000Z",
+    "modified_time": 1769465100000,
+    "modified_time_dt": "2026-01-26T22:05:00.000Z",
+    "product": {
+      "uid": "rds-advanced-security"
+    },
+    "title": "SQL Injection Data Exfiltration - Credit Card Data Breach",
+    "types": [
+      "TTPs",
+      "Collection",
+      "Data from Information Repositories",
+      "T1213",
+      "SQL Injection"
+    ],
+    "uid": "arn:aws:securityhub:ap-southeast-1:999888777666:finding/sqli-004",
+    "uid_alt": "sql-injection-004"
+  },
+  "is_alert": true,
+  "malware": [
+    {
+      "name": "SQLi.DataExfiltration",
+      "uid": "ATTACK-SQLI-2026-004",
+      "classification_ids": [3, 9]
+    }
+  ],
+  "message": "Critical SQL injection attack with confirmed data exfiltration of credit card information",
+  "metadata": {
+    "extensions": [
+      {
+        "name": "aws",
+        "uid": "998",
+        "version": "1.0.0"
+      }
+    ],
+    "product": {
+      "feature": {
+        "name": "DatabaseActivityStreams"
+      },
+      "name": "Amazon RDS",
+      "uid": "arn:aws:securityhub:ap-southeast-1::product/aws/rds",
+      "vendor_name": "AWS"
+    },
+    "profiles": [
+      "cloud",
+      "datetime"
+    ],
+    "uid": "finding-sqli-uuid",
+    "version": "1.6.0"
+  },
+  "remediation": {
+    "desc": "CRITICAL BREACH RESPONSE: 1) Immediately isolate the database from public access. 2) Block attacking IP at network level. 3) Initiate incident response - this is a reportable data breach. 4) Engage legal/compliance for PCI-DSS notification requirements. 5) Preserve all logs for forensics. 6) Patch application SQL injection vulnerability. 7) Rotate all database credentials.",
+    "references": [
+      "https://owasp.org/www-community/attacks/SQL_Injection",
+      "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Auditing.html",
+      "https://www.pcisecuritystandards.org/document_library/"
+    ]
+  },
+  "resources": [
+    {
+      "cloud_partition": "aws",
+      "owner": {
+        "account": {
+          "type": "AWS Account",
+          "type_id": 10,
+          "uid": "999888777666"
+        }
+      },
+      "region": "ap-southeast-1",
+      "type": "AWS::RDS::DBInstance",
+      "uid": "arn:aws:rds:ap-southeast-1:999888777666:db:db-instance-prod-mysql-01"
+    },
+    {
+      "cloud_partition": "aws",
+      "region": "ap-southeast-1",
+      "type": "Database::Table",
+      "uid": "production_db.credit_cards"
+    }
+  ],
+  "risk_level": "Critical",
+  "risk_level_id": 4,
+  "risk_score": 100,
+  "severity": "Critical",
+  "severity_id": 5,
+  "status": "New",
+  "status_id": 1,
+  "time": 1769465100000,
+  "time_dt": "2026-01-26T22:05:00.000Z",
+  "type_name": "Detection Finding: Create",
+  "type_uid": 200401
+}

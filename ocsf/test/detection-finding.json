@@ -1,0 +1,155 @@
+{
+  "activity_id": 1,
+  "activity_name": "Create",
+  "category_name": "Findings",
+  "category_uid": 2,
+  "class_name": "Detection Finding",
+  "class_uid": 2004,
+  "cloud": {
+    "account": {
+      "type": "AWS Account",
+      "type_id": 10,
+      "uid": "123456789012"
+    },
+    "cloud_partition": "aws",
+    "provider": "AWS",
+    "region": "eu-west-1"
+  },
+  "confidence": "High",
+  "confidence_id": 3,
+  "count": 1,
+  "device": {
+    "hostname": "ip-10-0-1-45.eu-west-1.compute.internal",
+    "ip": "10.0.1.45",
+    "instance_uid": "i-0abc123def456789",
+    "os": {
+      "name": "Amazon Linux",
+      "version": "2023"
+    },
+    "type": "Server",
+    "type_id": 1
+  },
+  "evidences": [
+    {
+      "api": {
+        "operation": "GetSecretValue",
+        "service": {
+          "name": "secretsmanager.amazonaws.com"
+        }
+      },
+      "data": {
+        "resource_role": "TARGET"
+      },
+      "src_endpoint": {
+        "autonomous_system": {
+          "name": "DigitalOcean LLC",
+          "number": 14061
+        },
+        "ip": "167.99.45.123",
+        "isp": "DigitalOcean",
+        "isp_org": "DigitalOcean LLC",
+        "location": {
+          "city": "Amsterdam",
+          "country": "Netherlands",
+          "lat": 52.3740,
+          "long": 4.8897
+        }
+      }
+    }
+  ],
+  "finding_info": {
+    "analytic": {
+      "type": "Machine Learning",
+      "type_id": 3,
+      "uid": "ml-anomaly-detector-v2"
+    },
+    "created_time": 1769420000000,
+    "created_time_dt": "2026-01-26T09:33:20.000Z",
+    "desc": "An API call to retrieve secrets was made from an unusual external IP address 167.99.45.123 that has not been seen in the account before.",
+    "first_seen_time": 1769419500000,
+    "first_seen_time_dt": "2026-01-26T09:25:00.000Z",
+    "last_seen_time": 1769420000000,
+    "last_seen_time_dt": "2026-01-26T09:33:20.000Z",
+    "modified_time": 1769420100000,
+    "modified_time_dt": "2026-01-26T09:35:00.000Z",
+    "product": {
+      "uid": "ml-anomaly-detector-v2"
+    },
+    "title": "Unusual API call to Secrets Manager from external IP",
+    "types": [
+      "Threats",
+      "UnauthorizedAccess:IAMUser/AnomalousBehavior"
+    ],
+    "uid": "arn:aws:guardduty:eu-west-1:123456789012:detector/abc123/finding/def456789",
+    "uid_alt": "def456789"
+  },
+  "is_alert": true,
+  "malware": [
+    {
+      "name": "Suspicious.Credential.Exfiltration",
+      "uid": "MALWARE-2026-0142",
+      "classification_ids": [3, 7]
+    }
+  ],
+  "message": "Unusual API call to Secrets Manager detected from suspicious external IP",
+  "metadata": {
+    "extensions": [
+      {
+        "name": "aws",
+        "uid": "998",
+        "version": "1.0.0"
+      }
+    ],
+    "product": {
+      "feature": {
+        "name": "AnomalyDetection"
+      },
+      "name": "GuardDuty",
+      "uid": "arn:aws:securityhub:eu-west-1::productv2/aws/guardduty",
+      "vendor_name": "AWS"
+    },
+    "profiles": [
+      "cloud",
+      "datetime"
+    ],
+    "uid": "finding-metadata-uuid-12345",
+    "version": "1.6.0"
+  },
+  "remediation": {
+    "desc": "Immediately rotate the compromised secrets and review IAM policies. Investigate the source IP for any additional malicious activity.",
+    "references": [
+      "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-iam.html",
+      "https://docs.aws.amazon.com/secretsmanager/latest/userguide/security-incident-response.html"
+    ]
+  },
+  "resources": [
+    {
+      "cloud_partition": "aws",
+      "owner": {
+        "account": {
+          "type": "AWS Account",
+          "type_id": 10,
+          "uid": "123456789012"
+        }
+      },
+      "region": "eu-west-1",
+      "type": "AWS::SecretsManager::Secret",
+      "uid": "arn:aws:secretsmanager:eu-west-1:123456789012:secret:prod/database/credentials-AbCdE"
+    }
+  ],
+  "risk_level": "High",
+  "risk_level_id": 3,
+  "risk_score": 85,
+  "severity": "High",
+  "severity_id": 4,
+  "status": "New",
+  "status_id": 1,
+  "time": 1769420100000,
+  "time_dt": "2026-01-26T09:35:00.000Z",
+  "type_name": "Detection Finding: Create",
+  "type_uid": 200401,
+  "vendor_attributes": {
+    "severity": "High",
+    "severity_id": 4
+  }
+}

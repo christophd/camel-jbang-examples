@@ -1,0 +1,104 @@
+{
+  "activity_id": 1,
+  "activity_name": "Logon",
+  "category_name": "Identity & Access Management",
+  "category_uid": 3,
+  "class_name": "Authentication",
+  "class_uid": 3002,
+  "actor": {
+    "user": {
+      "name": "john.doe",
+      "uid": "jdoe@company.com",
+      "type": "User",
+      "type_id": 1,
+      "account": {
+        "name": "john.doe",
+        "uid": "123456",
+        "type": "AWS IAM User",
+        "type_id": 3
+      }
+    },
+    "session": {
+      "uid": "sess-abc123def456",
+      "created_time": 1769480000000
+    }
+  },
+  "auth_protocol": "SAML",
+  "auth_protocol_id": 5,
+  "auth_factors": [
+    {
+      "factor_type": "Password",
+      "factor_type_id": 1
+    },
+    {
+      "factor_type": "TOTP",
+      "factor_type_id": 3
+    }
+  ],
+  "cloud": {
+    "account": {
+      "type": "AWS Account",
+      "type_id": 10,
+      "uid": "123456789012"
+    },
+    "provider": "AWS",
+    "region": "us-east-1"
+  },
+  "dst_endpoint": {
+    "hostname": "console.aws.amazon.com",
+    "ip": "52.94.236.2",
+    "port": 443,
+    "svc_name": "AWS Console"
+  },
+  "http_request": {
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
+  },
+  "is_cleartext": false,
+  "is_mfa": true,
+  "is_new_logon": true,
+  "is_remote": true,
+  "logon_type": "Interactive",
+  "logon_type_id": 2,
+  "message": "Successful MFA login to AWS Console from corporate network",
+  "metadata": {
+    "product": {
+      "name": "AWS CloudTrail",
+      "vendor_name": "AWS",
+      "version": "1.0"
+    },
+    "version": "1.6.0"
+  },
+  "service": {
+    "name": "AWS IAM Identity Center",
+    "uid": "sso.amazonaws.com"
+  },
+  "severity": "Informational",
+  "severity_id": 1,
+  "src_endpoint": {
+    "ip": "203.0.113.50",
+    "location": {
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "long": -122.4194
+    },
+    "isp": "Comcast",
+    "autonomous_system": {
+      "name": "Comcast Cable Communications",
+      "number": 7922
+    }
+  },
+  "status": "Success",
+  "status_id": 1,
+  "time": 1769480000000,
+  "time_dt": "2026-01-27T02:13:20.000Z",
+  "type_name": "Authentication: Logon",
+  "type_uid": 300201,
+  "user": {
+    "name": "john.doe",
+    "email": "john.doe@company.com",
+    "uid": "jdoe",
+    "type": "User",
+    "type_id": 1
+  }
+}

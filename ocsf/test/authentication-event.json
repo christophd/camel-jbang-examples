@@ -1,0 +1,117 @@
+{
+  "activity_id": 1,
+  "activity_name": "Logon",
+  "category_name": "Identity & Access Management",
+  "category_uid": 3,
+  "class_name": "Authentication",
+  "class_uid": 3002,
+  "cloud": {
+    "account": {
+      "type": "AWS Account",
+      "type_id": 10,
+      "uid": "987654321098"
+    },
+    "cloud_partition": "aws",
+    "provider": "AWS",
+    "region": "us-west-2"
+  },
+  "dst_endpoint": {
+    "hostname": "signin.aws.amazon.com",
+    "ip": "52.94.236.45",
+    "port": 443,
+    "svc_name": "AWS Management Console"
+  },
+  "http_request": {
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+  },
+  "is_mfa": true,
+  "logon_type": "Interactive",
+  "logon_type_id": 2,
+  "message": "User successfully authenticated to AWS Management Console with MFA",
+  "metadata": {
+    "extensions": [
+      {
+        "name": "aws",
+        "uid": "998",
+        "version": "1.0.0"
+      }
+    ],
+    "product": {
+      "feature": {
+        "name": "CloudTrail"
+      },
+      "name": "AWS CloudTrail",
+      "uid": "arn:aws:cloudtrail:us-west-2:987654321098:trail/management-events",
+      "vendor_name": "AWS"
+    },
+    "profiles": [
+      "cloud",
+      "datetime"
+    ],
+    "uid": "auth-event-uuid-67890",
+    "version": "1.6.0"
+  },
+  "service": {
+    "name": "AWS IAM Identity Center",
+    "uid": "arn:aws:sso:::instance/ssoins-12345"
+  },
+  "session": {
+    "created_time": 1769425200000,
+    "created_time_dt": "2026-01-26T11:00:00.000Z",
+    "credential_uid": "ASIA3LNAP5JEXAMPLE",
+    "expiration_time": 1769468400000,
+    "expiration_time_dt": "2026-01-26T23:00:00.000Z",
+    "is_remote": true,
+    "issuer": "arn:aws:iam::987654321098:saml-provider/ADFS",
+    "uid": "session-12345-abcde"
+  },
+  "severity": "Informational",
+  "severity_id": 1,
+  "src_endpoint": {
+    "autonomous_system": {
+      "name": "Comcast Cable Communications",
+      "number": 7922
+    },
+    "ip": "73.45.123.89",
+    "isp": "Comcast",
+    "isp_org": "Comcast Cable Communications LLC",
+    "location": {
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "long": -122.4194,
+      "region": "California"
+    }
+  },
+  "status": "Success",
+  "status_id": 1,
+  "time": 1769425200000,
+  "time_dt": "2026-01-26T11:00:00.000Z",
+  "type_name": "Authentication: Logon",
+  "type_uid": 300201,
+  "user": {
+    "account": {
+      "type": "AWS Account",
+      "type_id": 10,
+      "uid": "987654321098"
+    },
+    "email_addr": "john.smith@example.com",
+    "groups": [
+      {
+        "name": "Developers",
+        "type": "IAM Group",
+        "uid": "arn:aws:iam::987654321098:group/Developers"
+      },
+      {
+        "name": "ReadOnlyAccess",
+        "type": "IAM Group",
+        "uid": "arn:aws:iam::987654321098:group/ReadOnlyAccess"
+      }
+    ],
+    "name": "john.smith",
+    "type": "User",
+    "type_id": 1,
+    "uid": "arn:aws:iam::987654321098:user/john.smith",
+    "uid_alt": "AIDA3LNAP5JEXAMPLE"
+  }
+}

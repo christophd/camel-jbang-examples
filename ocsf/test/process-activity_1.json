@@ -1,0 +1,85 @@
+{
+  "activity_id": 1,
+  "activity_name": "Launch",
+  "category_name": "System Activity",
+  "category_uid": 1,
+  "class_name": "Process Activity",
+  "class_uid": 1007,
+  "actor": {
+    "process": {
+      "cmd_line": "cmd.exe /c whoami /all && net user && net localgroup administrators",
+      "file": {
+        "name": "cmd.exe",
+        "path": "C:\\Windows\\System32\\cmd.exe",
+        "type": "Regular File",
+        "type_id": 1
+      },
+      "name": "cmd.exe",
+      "pid": 6789,
+      "uid": "proc-cmd-6789",
+      "parent_process": {
+        "name": "excel.exe",
+        "pid": 5432,
+        "cmd_line": "\"C:\\Program Files\\Microsoft Office\\root\\Office16\\EXCEL.EXE\" /e \"C:\\Users\\victim\\Downloads\\Invoice_2026.xlsm\""
+      }
+    },
+    "user": {
+      "name": "jsmith",
+      "uid": "S-1-5-21-123456789-987654321-111222333-1001",
+      "type": "User",
+      "type_id": 1
+    }
+  },
+  "device": {
+    "hostname": "LAPTOP-SALES042",
+    "ip": "10.3.8.42",
+    "os": {
+      "name": "Windows",
+      "version": "10 Enterprise 21H2"
+    },
+    "type": "Laptop",
+    "type_id": 3
+  },
+  "process": {
+    "cmd_line": "cmd.exe /c whoami /all && net user && net localgroup administrators",
+    "created_time": 1769520000000,
+    "file": {
+      "name": "cmd.exe",
+      "path": "C:\\Windows\\System32\\cmd.exe"
+    },
+    "name": "cmd.exe",
+    "pid": 6789,
+    "tid": 6790,
+    "uid": "proc-cmd-6789",
+    "user": {
+      "name": "jsmith",
+      "type": "User",
+      "type_id": 1
+    },
+    "parent_process": {
+      "name": "excel.exe",
+      "pid": 5432,
+      "file": {
+        "name": "excel.exe",
+        "path": "C:\\Program Files\\Microsoft Office\\root\\Office16\\EXCEL.EXE"
+      }
+    }
+  },
+  "message": "Suspicious reconnaissance commands executed by cmd.exe spawned from Excel macro - likely malicious document",
+  "metadata": {
+    "product": {
+      "name": "Microsoft Defender for Endpoint",
+      "vendor_name": "Microsoft",
+      "version": "10.0"
+    },
+    "version": "1.6.0"
+  },
+  "severity": "High",
+  "severity_id": 4,
+  "status": "Success",
+  "status_id": 1,
+  "time": 1769520000000,
+  "time_dt": "2026-01-27T13:20:00.000Z",
+  "type_name": "Process Activity: Launch",
+  "type_uid": 100701
+}

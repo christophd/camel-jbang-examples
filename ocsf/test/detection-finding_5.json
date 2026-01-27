@@ -1,0 +1,167 @@
+{
+  "activity_id": 1,
+  "activity_name": "Create",
+  "category_name": "Findings",
+  "category_uid": 2,
+  "class_name": "Detection Finding",
+  "class_uid": 2004,
+  "cloud": {
+    "account": {
+      "type": "AWS Account",
+      "type_id": 10,
+      "uid": "444333222111"
+    },
+    "cloud_partition": "aws",
+    "provider": "AWS",
+    "region": "us-east-2"
+  },
+  "confidence": "High",
+  "confidence_id": 3,
+  "count": 1,
+  "device": {
+    "hostname": "lambda-execution-env",
+    "ip": "10.5.2.78",
+    "instance_uid": "lambda-arn-exec-12345",
+    "os": {
+      "name": "Amazon Linux",
+      "version": "2"
+    },
+    "type": "Serverless",
+    "type_id": 8
+  },
+  "evidences": [
+    {
+      "api": {
+        "operation": "GetObject",
+        "service": {
+          "name": "s3.amazonaws.com"
+        }
+      },
+      "data": {
+        "bucket": "company-sensitive-data-prod",
+        "key": "exports/customer-pii-2026.csv.gz",
+        "bytes_transferred": 2147483648,
+        "resource_role": "TARGET"
+      },
+      "dst_endpoint": {
+        "ip": "185.199.108.153",
+        "port": 443,
+        "domain": "github.com"
+      },
+      "src_endpoint": {
+        "autonomous_system": {
+          "name": "Amazon.com Inc.",
+          "number": 16509
+        },
+        "ip": "10.5.2.78",
+        "location": {
+          "city": "Columbus",
+          "country": "United States",
+          "lat": 39.9612,
+          "long": -82.9988
+        }
+      }
+    }
+  ],
+  "finding_info": {
+    "analytic": {
+      "type": "Behavioral",
+      "type_id": 4,
+      "uid": "macie-data-exfil-detector"
+    },
+    "created_time": 1769470000000,
+    "created_time_dt": "2026-01-26T23:26:40.000Z",
+    "desc": "A Lambda function 'data-export-handler' downloaded 2GB of sensitive PII data from S3 bucket 'company-sensitive-data-prod' and initiated an outbound connection to github.com. This behavior is anomalous - the function typically processes <10MB and has never connected to external endpoints. Possible supply chain attack via compromised dependency.",
+    "first_seen_time": 1769469500000,
+    "first_seen_time_dt": "2026-01-26T23:18:20.000Z",
+    "last_seen_time": 1769470000000,
+    "last_seen_time_dt": "2026-01-26T23:26:40.000Z",
+    "modified_time": 1769470100000,
+    "modified_time_dt": "2026-01-26T23:28:20.000Z",
+    "product": {
+      "uid": "amazon-macie-detector"
+    },
+    "title": "Lambda Function Data Exfiltration to External Domain",
+    "types": [
+      "TTPs",
+      "Exfiltration",
+      "Exfiltration Over Web Service",
+      "T1567",
+      "Supply Chain Compromise"
+    ],
+    "uid": "arn:aws:securityhub:us-east-2:444333222111:finding/exfil-005",
+    "uid_alt": "lambda-exfil-005"
+  },
+  "is_alert": true,
+  "malware": [
+    {
+      "name": "Trojan.SupplyChain.NPM",
+      "uid": "MALWARE-SUPPLY-2026-005",
+      "classification_ids": [2, 6, 11]
+    }
+  ],
+  "message": "Lambda function exfiltrating sensitive PII data to external GitHub endpoint - possible supply chain attack",
+  "metadata": {
+    "extensions": [
+      {
+        "name": "aws",
+        "uid": "998",
+        "version": "1.0.0"
+      }
+    ],
+    "product": {
+      "feature": {
+        "name": "SensitiveDataDiscovery"
+      },
+      "name": "Amazon Macie",
+      "uid": "arn:aws:securityhub:us-east-2::product/aws/macie",
+      "vendor_name": "AWS"
+    },
+    "profiles": [
+      "cloud",
+      "datetime"
+    ],
+    "uid": "finding-exfil-uuid",
+    "version": "1.6.0"
+  },
+  "remediation": {
+    "desc": "CRITICAL: 1) Immediately disable the Lambda function. 2) Revoke all IAM roles associated with the function. 3) Block outbound traffic to github.com at VPC level. 4) Scan all Lambda dependencies for malicious packages. 5) Check npm/pip package versions against known compromised versions. 6) Audit all recent code deployments. 7) Notify affected customers per GDPR/CCPA requirements.",
+    "references": [
+      "https://docs.aws.amazon.com/macie/latest/user/findings-types.html",
+      "https://attack.mitre.org/techniques/T1567/",
+      "https://www.cisa.gov/supply-chain-compromise"
+    ]
+  },
+  "resources": [
+    {
+      "cloud_partition": "aws",
+      "owner": {
+        "account": {
+          "type": "AWS Account",
+          "type_id": 10,
+          "uid": "444333222111"
+        }
+      },
+      "region": "us-east-2",
+      "type": "AWS::Lambda::Function",
+      "uid": "arn:aws:lambda:us-east-2:444333222111:function:data-export-handler"
+    },
+    {
+      "cloud_partition": "aws",
+      "region": "us-east-2",
+      "type": "AWS::S3::Bucket",
+      "uid": "arn:aws:s3:::company-sensitive-data-prod"
+    }
+  ],
+  "risk_level": "Critical",
+  "risk_level_id": 4,
+  "risk_score": 98,
+  "severity": "Critical",
+  "severity_id": 5,
+  "status": "New",
+  "status_id": 1,
+  "time": 1769470100000,
+  "time_dt": "2026-01-26T23:28:20.000Z",
+  "type_name": "Detection Finding: Create",
+  "type_uid": 200401
+}
