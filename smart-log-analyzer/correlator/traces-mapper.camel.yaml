@@ -8,7 +8,7 @@
       steps:
         - log:
             loggingLevel: DEBUG
-            message: Received trace from Kafka
+            message: Received trace from Kafka\n${body}
         - split:
             id: split-spans
             expression:

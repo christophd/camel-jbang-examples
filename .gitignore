@@ -6,4 +6,3 @@ target/
 camel-runner.jar
 *.i??
 .citrus-jbang/
-.kaoto
